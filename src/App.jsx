@@ -2,6 +2,8 @@ import Descriptions from "./components/Descriptions";
 import { useEffect, useState } from "react";
 import { getFormattedWeatherData } from "./weatherService";
 
+
+
 function App() {
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -9,16 +11,16 @@ function App() {
     setIsAnimating(true);
     setTimeout(() => {
       setIsAnimating(false);
-    }, 1000); // Animation duration in milliseconds
+    }, 1000); // animation duration in milliseconds
   };
 
-  const hotBg = "https://source.unsplash.com/1920x1080/?summer";
-
-  const [city, setCity] = useState("Hyderabad");
+  const [city, setCity] = useState("hyderabad");
   const [weather, setWeather] = useState(null);
   const [units, setUnits] = useState("metric");
-  const [bg, setBg] = useState(hotBg);
 
+  const hotBg = `https://source.unsplash.com/1920x1080/?summer`;
+  const [bg, setBg] = useState(hotBg);
+  
   useEffect(() => {
     const coldBg = "https://source.unsplash.com/1920x1080/?ice";
     const fetchWeatherData = async () => {
@@ -38,17 +40,16 @@ function App() {
     const button = e.currentTarget;
     const currentUnit = button.innerText.slice(1);
 
-    const isCelsius = currentUnit === "C";
-    button.innerText = isCelsius ? "°F" : "°C";
+    const isCelsius = currentUnit === "c";
+    button.innerText = isCelsius ? "°f" : "°c";
     setUnits(isCelsius ? "metric" : "imperial");
   };
 
-  const enterKeyPressed = (e) => {
-    if (e.keyCode === 13) {
-      setCity(e.currentTarget.value);
-      e.currentTarget.blur();
-    }
-  };
+  const handleSearch = () => {
+    const input = document.getElementById("city-input");
+    setCity(input.value);
+    input.blur();
+  }
 
   return (
     <div
@@ -62,25 +63,34 @@ function App() {
             <div className="space-y-4">
               <div className="flex justify-between items-center">
                 <input
-                  onKeyDown={enterKeyPressed}
+                  onKeyDown={(e) => {
+                    if (e.keyCode === 13) handleSearch();
+                  }}
                   type="text"
+                  id="city-input"
                   name="city"
-                  placeholder="Enter City..."
-                  className="border border-gray-300 px-2 py-1 rounded-lg w-full md:w-3/4 focus:outline-none focus:border-blue-400"
+                  placeholder="enter city..."
+                  className="text-white border border-gray-300 px-2 py-1 rounded-lg w-full md:w-3/4 focus:outline-none focus:border-white bg-gradient-to-r from-purple-500 to-blue-600 to-pink-500"
                 />
                 <button
                   onClick={(e) => handleUnitsClick(e)}
-                  className={` px-4 py-2 mr-4 text-white text-[40px] font-bold hover:text-yellow-400 transition duration-500 ease-in-out transform ${
+                  className={`px-4 py-2 mr-4 text-white text-[40px] font-bold hover:text-yellow-400 transition duration-500 ease-in-out transform ${
                     isAnimating ? "animate-bounce" : ""
                   }`}
                 >
-                  {units === "metric" ? "°C" : "°F"}
+                  {units === "metric" ? "°c" : "°f"}
+                </button>
+                <button
+                  onClick={handleSearch}
+                  className="bg-gradient-to-r from-purple-600 to-blue-600 to-pink-600 transition-transform duration-300 transform-gpu hover:scale-110 text-white font-bold py-2 px-4 rounded"
+                >
+                  Search
                 </button>
               </div>
 
               <div className="flex flex-col items-center justify-center space-y-6">
                 <div className="flex items-center space-x-4">
-                  <h3 className="font-medium text-gray-700 text-lg">
+                  <h3 className="font-medium text-white text-lg">
                     {weather.name}, {weather.country}
                   </h3>
                   <img
@@ -88,12 +98,12 @@ function App() {
                     alt="weatherIcon"
                     className="w-12 h-12"
                   />
-                  <h3 className="font-medium text-gray-700 text-lg">
+                  <h3 className="font-medium text-white text-lg">
                     {weather.description}
                   </h3>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <h1 className="font-bold text-4xl text-gray-700">
+                  <h1 className="font-bold text-4xl text-white">
                     {weather.temp.toFixed()}°{units === "metric" ? "C" : "F"}
                   </h1>
                 </div>
