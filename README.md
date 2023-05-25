@@ -1,2 +1,0 @@
-# movie-tickets-booking-
-# weather
