@@ -59,7 +59,7 @@ const Descriptions = ({ weather, units }) => {
       {cards.map(({ id, icon, title, data, unit }) => (
         <div
           key={id}
-          className="bg-white bg-opacity-[40%] pb-3 rounded-lg shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 "
+          className="bg-white bg-opacity-[40%] pb-3 text-white rounded-lg shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 "
         >
           <div className="p-6 flex items-center justify-center">
             {icon}

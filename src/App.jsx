@@ -12,7 +12,7 @@ function App() {
     }, 1000); // Animation duration in milliseconds
   };
 
-  const hotBg = "https://source.unsplash.com/1920x1080/?hot-landscape";
+  const hotBg = "https://source.unsplash.com/1920x1080/?summer";
 
   const [city, setCity] = useState("Hyderabad");
   const [weather, setWeather] = useState(null);
@@ -20,7 +20,7 @@ function App() {
   const [bg, setBg] = useState(hotBg);
 
   useEffect(() => {
-    const coldBg = "https://source.unsplash.com/1920x1080/?cold-landscape";
+    const coldBg = "https://source.unsplash.com/1920x1080/?ice";
     const fetchWeatherData = async () => {
       const data = await getFormattedWeatherData(city, units);
       setWeather(data);
