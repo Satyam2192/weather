@@ -2,8 +2,6 @@ import Descriptions from "./components/Descriptions";
 import { useEffect, useState } from "react";
 import { getFormattedWeatherData } from "./weatherService";
 
-
-
 function App() {
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -20,7 +18,7 @@ function App() {
 
   const hotBg = `https://source.unsplash.com/1920x1080/?summer`;
   const [bg, setBg] = useState(hotBg);
-  
+
   useEffect(() => {
     const coldBg = "https://source.unsplash.com/1920x1080/?ice";
     const fetchWeatherData = async () => {
@@ -49,19 +47,19 @@ function App() {
     const input = document.getElementById("city-input");
     setCity(input.value);
     input.blur();
-  }
+  };
 
   return (
     <div
-      className="justify-center bg-cover bg-no-repeat bg-center h-screen"
+      className="p-1 flex flex-col justify-center min-h-screen bg-center bg-cover"
       style={{ backgroundImage: `url(${bg})` }}
     >
-      <div className="h-screen flex justify-center items-center ">
+      <div className="flex justify-center items-center ">
         <div className="absolute inset-0 bg-black opacity-30"></div>
-        <div className="flex justify-center content-center mx-auto sm:px-6 lg:px-8 relative max-w-[600px] w-full rounded-lg shadow-lg bg-gradient-to-r from-purple-600 to-blue-600 to-pink-600 pb-6">
+        <div className="relative flex flex-col justify-center mx-auto p-4 md:p-0 bg-gradient-to-r from-purple-600 to-blue-600 to-pink-600 rounded-2xl md:m-8 max-w-md w-full ">
           {weather && (
-            <div className="space-y-4">
-              <div className="flex justify-between items-center">
+            <div className="space-y-4 m-10 ">
+              <div className="flex flex-col md:flex-row justify-between items-center">
                 <input
                   onKeyDown={(e) => {
                     if (e.keyCode === 13) handleSearch();
@@ -82,14 +80,14 @@ function App() {
                 </button>
                 <button
                   onClick={handleSearch}
-                  className="bg-gradient-to-r from-purple-600 to-blue-600 to-pink-600 transition-transform duration-300 transform-gpu hover:scale-110 text-white font-bold py-2 px-4 rounded"
+                  className="w-[120px] bg-gradient-to-r from-purple-600 to-blue-600 to-pink-600 transition-transform duration-300 transform-gpu hover:scale-110 text-white font-bold py-2 px-4 rounded"
                 >
                   Search
                 </button>
               </div>
 
-              <div className="flex flex-col items-center justify-center space-y-6">
-                <div className="flex items-center space-x-4">
+              <div className="flex flex-col items-center  space-y-6">
+                <div className="flex items-center space-x-2 md:space-x-4">
                   <h3 className="font-medium text-white text-lg">
                     {weather.name}, {weather.country}
                   </h3>
