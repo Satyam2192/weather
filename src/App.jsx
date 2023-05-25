@@ -51,14 +51,14 @@ function App() {
 
   return (
     <div
-      className="p-1 flex flex-col justify-center min-h-screen bg-center bg-cover"
+      className="p-7 flex flex-col justify-center min-h-screen bg-center bg-cover"
       style={{ backgroundImage: `url(${bg})` }}
     >
-      <div className="flex justify-center items-center ">
+      <div className="flex justify-center items-center  ">
         <div className="absolute inset-0 bg-black opacity-30"></div>
-        <div className="relative flex flex-col justify-center mx-auto p-4 md:p-0 bg-gradient-to-r from-purple-600 to-blue-600 to-pink-600 rounded-2xl md:m-8 max-w-md w-full ">
+        <div className="relative flex flex-col justify-center mx-auto p-4 md:p-0 bg-gradient-to-r from-purple-600 to-blue-600 to-pink-600 rounded-2xl md: max-w-[600px] w-full ">
           {weather && (
-            <div className="space-y-4 m-10 ">
+            <div className="space-y-4 m-1 md:m-7 "> 
               <div className="flex flex-col md:flex-row justify-between items-center">
                 <input
                   onKeyDown={(e) => {
@@ -87,7 +87,7 @@ function App() {
               </div>
 
               <div className="flex flex-col items-center  space-y-6">
-                <div className="flex items-center space-x-2 md:space-x-4">
+                <div className="flex justify-center items-center space-x-6 pl-1 md:space-x-4">
                   <h3 className="font-medium text-white text-lg">
                     {weather.name}, {weather.country}
                   </h3>
