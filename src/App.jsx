@@ -56,7 +56,7 @@ function App() {
     >
       <div className="flex justify-center items-center  ">
         <div className="absolute inset-0 bg-black opacity-30"></div>
-        <div className="relative flex flex-col justify-center mx-auto p-4 md:p-0 bg-gradient-to-r from-purple-600 to-blue-600 to-pink-600 rounded-2xl md: max-w-[600px] w-full ">
+        <div className="relative flex flex-col justify-center mx-auto p-4 md:p-0 bg-gradient-to-r from-purple-600 to-pink-600 hover:bg-gradient-to-r hover:from-pink-600 hover:to-purple-600 md:hover:scale-110 rounded-2xl md: max-w-[600px] w-full ">
           {weather && (
             <div className="space-y-4 m-1 md:m-7 "> 
               <div className="flex flex-col md:flex-row justify-between items-center">
@@ -68,7 +68,7 @@ function App() {
                   id="city-input"
                   name="city"
                   placeholder="enter city..."
-                  className="text-white border border-gray-300 px-2 py-1 rounded-lg w-full md:w-3/4 focus:outline-none focus:border-white bg-gradient-to-r from-purple-500 to-blue-600 to-pink-500"
+                  className="text-white border border-gray-300 px-2 py-1 rounded-lg w-full md:w-3/4 focus:outline-none focus:border-white bg-gradient-to-r from-purple-500 to-blue-600 to-pink-500 "
                 />
                 <button
                   onClick={(e) => handleUnitsClick(e)}
@@ -80,7 +80,7 @@ function App() {
                 </button>
                 <button
                   onClick={handleSearch}
-                  className="w-[120px] bg-gradient-to-r from-purple-600 to-blue-600 to-pink-600 transition-transform duration-300 transform-gpu hover:scale-110 text-white font-bold py-2 px-4 rounded"
+                  className="w-[120px] bg-gradient-to-r from-purple-600 to-pink-600 hover:bg-gradient-to-r hover:from-pink-600 hover:to-purple-600 transition-transform duration-300 transform-gpu hover:scale-110 text-white font-bold py-2 px-4 rounded"
                 >
                   Search
                 </button>
